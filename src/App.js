@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state= {
+      searchQuery: '',
+      location: {},
+    
+
+    }
+  }
+
+  getLocation = async () => {
+    const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_KEY}&q=${this.state.searchQuery}&format=json`;
+    const response = await axios.get(API);
+    console.log('Location IQ Data:', response);
+    this.setState({ location: response.data[0]})
+  }
+
+  render() {
+    return (
+      <>
+      <input onChange={(e) => this.setState({searchQuery: e.target.value})} placeholder="Type City to Search Here...." type="text"/>
+      <button onClick={this.getLocation}>Explore!</button>
+
+      <p>Location: {this.state.location.display_name}</p>
+      <p>Longitude: {this.state.location.lon}</p>
+      <p>Latitude: {this.state.location.lat}</p>
+      </>
+    )
+  }
+
 }
+
+
 
 export default App;
