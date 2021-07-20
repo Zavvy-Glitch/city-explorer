@@ -1,4 +1,5 @@
-# GeoCoding
+# City Explorer![API Flow chart]
+
 
 **Author**: Chattray Chea
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
