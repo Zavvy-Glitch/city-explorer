@@ -21,16 +21,17 @@
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
-[<img src="src/API Flow chart.JPG">]
+Collaboration with Gina Hobbs in creation of the API flow chart below.
+<img src="src/API Flow chart.JPG">
 
 ## LAB-06
 
-Name of feature: ________________________________
+Name of feature: Map / Location / Longitude / Latitude
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 4hours
 
-Start time: _____
+Start time: 12:30pm
 
-Finish time: _____
+Finish time: 7:12pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 6hrs 42mins
