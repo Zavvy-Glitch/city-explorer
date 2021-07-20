@@ -18,10 +18,14 @@ class App extends React.Component {
 
   getLocation = async (e) => {
     e.preventDefault();
+      try {
     const API = `https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_KEY}&q=${this.state.searchQuery}&format=json`;
     const response = await axios.get(API);
     console.log('Location IQ Data:', response);
     this.setState({ location: response.data[0]})
+    } catch {
+      window.alert("ERROR: Unable  to Compute!")
+    }
 
     const map = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=18`
     const respond = await axios.get(map);
