@@ -1,9 +1,11 @@
 import axios from 'axios';
+import cors from 'cors';
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './index.css';
+// import Weather from 'Weather.js';
 
 class App extends React.Component {
   constructor (props) {
@@ -11,7 +13,8 @@ class App extends React.Component {
     this.state= {
       searchQuery: '',
       location: {},
-      map: ''
+      map: '',
+      weather: []
 
     }
   }
@@ -31,6 +34,10 @@ class App extends React.Component {
     const respond = await axios.get(map);
     console.log(respond);
     this.setState({ map: respond.config.url})
+   
+    const weather = `http://localhost:3333/weather?key=${this.state.searchQuery}`
+    const response = await axios.get(weather);
+    this.setState({weather: response.data})
   }
 
 
