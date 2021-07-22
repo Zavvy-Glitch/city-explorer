@@ -41,7 +41,8 @@ class App extends React.Component {
     const responseWeather = await axios.get(weather);
     this.setState({ weather: responseWeather.data})
     
-    const movies = `http://localhost:3333/movies?searchQuery=${this.state.searchQuery}`
+    // const movies = `http://localhost:3333/movies?searchQuery=${this.state.searchQuery}`
+    const movies = `https://cityexplorer301.herokuapp.com/movies?searchQuery=${this.state.searchQuery}`
     console.log(movies);
     const responseMovie = await axios.get(movies);
     this.setState({ movie: responseMovie.data})
