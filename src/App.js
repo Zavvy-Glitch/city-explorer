@@ -1,11 +1,11 @@
 import axios from 'axios';
-import cors from 'cors';
 import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import Weather from './Weather.js';
+import Movies from './Movies.js';
 import './index.css';
-// import Weather from 'Weather.js';
 
 class App extends React.Component {
   constructor (props) {
@@ -14,7 +14,8 @@ class App extends React.Component {
       searchQuery: '',
       location: {},
       map: '',
-      weather: []
+      weather: [],
+      movie: []
 
     }
   }
@@ -35,17 +36,23 @@ class App extends React.Component {
     console.log(respond);
     this.setState({ map: respond.config.url})
    
-    const weather = `http://localhost:3333/weather?key=${this.state.searchQuery}`
-    const response = await axios.get(weather);
-    this.setState({weather: response.data})
+    const weather = `http://localhost:3333/weather?searchQuery=${this.state.searchQuery}`
+    console.log(weather)
+    const responseWeather = await axios.get(weather);
+    this.setState({ weather: responseWeather.data})
+    
+    const movies = `http://localhost:3333/movies?searchQuery=${this.state.searchQuery}`
+    console.log(movies);
+    const responseMovie = await axios.get(movies);
+    this.setState({ movie: responseMovie.data})
   }
-
-
-
+  
+  updateSearch = (e) => this.setState({ searchQuery: e.target.value})
   render() {
+    // console.log("searchQuerystate:::::::",this.state)
     return (
       <>
-      <Form id="form">
+      <Form id="form" onSubmit={this.getLocation}>
         <Form.Control size="lg" placeholder="Type City to Search Here...." onChange={(e) => this.setState({searchQuery: e.target.value})}  type="text"/>
         <Button id="button" onClick={this.getLocation}>Explore!</Button>
         <Form.Text id="letters"><br />
@@ -58,10 +65,18 @@ class App extends React.Component {
       <Card  style={{ width: '20rem' }}>
         <Card.Img id="card" variant="top" src={this.state.map} />
       </Card>
+
+        
+        {this.state.weather.length &&
+          <Weather weather={this.state.weather} searchQuery={this.state.searchQuery} />
+      }
+        {this.state.movie.length  &&
+        <Movies movie={this.state.movie} searchQuery={this.state.searchQuery} />
+      }
+        
       </>
     )
   }
-
 }
 
 
