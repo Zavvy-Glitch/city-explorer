@@ -36,7 +36,8 @@ class App extends React.Component {
     console.log(respond);
     this.setState({ map: respond.config.url})
    
-    const weather = `http://localhost:3333/weather?searchQuery=${this.state.searchQuery}`
+    // const weather = `http://localhost:3333/weather?searchQuery=${this.state.searchQuery}`
+    const weather = `https://cityexplorer301.herokuapp.com/weather?searchQuery=${this.state.searchQuery}`
     console.log(weather)
     const responseWeather = await axios.get(weather);
     this.setState({ weather: responseWeather.data})
