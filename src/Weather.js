@@ -8,8 +8,6 @@ render() {
       {this.props.weather.map((value, idx) =>
         <Card  key={idx} style={{ width: '20rem' }}>
           <Card.Body>
-          <Card.Text>16 Day Forecast</Card.Text>
-          <Card.Text>{value.city}</Card.Text>
           <Card.Text>{value.date}</Card.Text>
           <Card.Text>{value.description}</Card.Text>
           <Card.Text>{value.temprature}</Card.Text>

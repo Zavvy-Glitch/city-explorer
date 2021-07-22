@@ -11,7 +11,7 @@ render() {
           <Card.Text>Movies</Card.Text>
           <Card.Text>{value.title}</Card.Text>
           <Card.Text>{value.popularity}</Card.Text>
-          <Card.Text>{value.imageUrl}</Card.Text>
+          <Card.Text><img src='https://image.tmdb.org/t/p/w780' alt={this.state.searchQuery}/>{value.imageUrl}</Card.Text>
           <Card.Text>{value.overView}</Card.Text>
           <Card.Text>{value.averageVotes}</Card.Text>
           <Card.Text>{value.totalVotes}</Card.Text>
