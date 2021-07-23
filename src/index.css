@@ -8,6 +8,7 @@
   display:flex;
   justify-content:center;
   background-color:beige;
+  color:darkgrey;
 }
 
 #paragraph{
@@ -21,11 +22,49 @@ body{
   background-color:#615E63;
 }
 
+h1{
+  
+  color:#E9DDFA;
+}
+
 #form{
   display:block;
 }
 
-#card{
+
+.card-body{
+  display:block;
+  border-style:solid;
+  margin-bottom:10px;
+  padding: 10px;
+  background-color: darkgrey;
+  border-radius: 30px;
+}
+.card-text{
+  color:#514661;
   display:flex;
-  justify-content:center;
+  justify-content: center;
+  background-color: darkgrey;
+}
+
+#movieTitle.card-text{
+  font-size:40px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#popular.card-text{
+  text-align: center;
+
+}
+
+#weather{
+  display:flex;
+  flex-wrap: wrap;
+  margin: 20%;
+}
+
+#weatherHeader{
+  display:grid;
+  
 }
