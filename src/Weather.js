@@ -5,8 +5,10 @@ class Weather extends React.Component{
 render() {
   return(
       <>
+      <h1 id="weatherHeader">Weather Report</h1>
+      <div id="weather">
       {this.props.weather.map((value, idx) =>
-        <Card  key={idx} style={{ width: '20rem' }}>
+        <Card  key={idx} style={{ width: '8rem' }}>
           <Card.Body>
           <Card.Text>{value.date}</Card.Text>
           <Card.Text>{value.description}</Card.Text>
@@ -15,7 +17,8 @@ render() {
           </Card.Body>
         </Card>
         )}
-      </>
+      </div>
+    </>
     );
   }
 }
