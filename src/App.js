@@ -27,31 +27,31 @@ class App extends React.Component {
     const response = await axios.get(API);
     console.log('Location IQ Data:', response);
     this.setState({ location: response.data[0]})
-    } catch {
-      window.alert("ERROR: Unable  to Compute!")
-    }
 
     const map = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_KEY}&center=${this.state.location.lat},${this.state.location.lon}&zoom=18`
     const respond = await axios.get(map);
     console.log(respond);
     this.setState({ map: respond.config.url})
-   
-    // const weather = `http://localhost:3333/weather?searchQuery=${this.state.searchQuery}`
-    const weather = `https://cityexplorer301.herokuapp.com/weather?searchQuery=${this.state.searchQuery}`
+
+    const weather = `http://localhost:3333/weather?searchQuery=${this.state.searchQuery}`
+    // const weather = `https://cityexplorer301.herokuapp.com/weather?searchQuery=${this.state.searchQuery}`
     console.log(weather)
     const responseWeather = await axios.get(weather);
     this.setState({ weather: responseWeather.data})
-    
-    // const movies = `http://localhost:3333/movies?searchQuery=${this.state.searchQuery}`
-    const movies = `https://cityexplorer301.herokuapp.com/movies?searchQuery=${this.state.searchQuery}`
+  
+    const movies = `http://localhost:3333/movies?searchQuery=${this.state.searchQuery}`
+    // const movies = `https://cityexplorer301.herokuapp.com/movies?searchQuery=${this.state.searchQuery}`
     console.log(movies);
     const responseMovie = await axios.get(movies);
     this.setState({ movie: responseMovie.data})
-  }
+      } catch {
+        window.alert("ERROR: Unable to Complete your Request")
+      } 
+    }
   
   updateSearch = (e) => this.setState({ searchQuery: e.target.value})
+  
   render() {
-    // console.log("searchQuerystate:::::::",this.state)
     return (
       <>
       <Form id="form" onSubmit={this.getLocation}>

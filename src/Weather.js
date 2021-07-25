@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card'
 
 class Weather extends React.Component{
 render() {
+  console.log(this.props.weather);
   return(
       <>
       <h1 id="weatherHeader">Weather Report</h1>
